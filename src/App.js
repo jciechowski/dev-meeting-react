@@ -1,28 +1,51 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+function App() {
+  const contacts = [
+    {
+      name: 'John Smith',
+      phoneNumber: 48500600700,
+      eMail: 'john@smith.org',
+      address: {
+        city: 'Gdansk',
+        street: 'Ogarna 1'
+      }
+    },
+    {
+      name: 'Jaś Fasola',
+      phoneNumber: 4860125323,
+      eMail: 'jas@fasol.com',
+      address: {
+        city: 'Gdansk',
+        street: 'Dmowskiego 12'
+      }
+    },
+    {
+      name: 'Anna Nowak',
+      phoneNumber: 48702942134,
+      eMail: 'nowaczka@gmail.com',
+      address: {
+        city: 'Gdynia',
+        street: 'Władysława 4'
+      }
+    }
+  ];
+  return (
+    <section>
+      <h1>Contacts</h1>
+      {contacts.map(contact => (
+        <div className="card col-md-2" key={contact.name}>
+          <span className="card-body">
+            <h2 className="card-title">{contact.name}</h2>
+            <p>Phone: +{contact.phoneNumber}</p>
+            <p>
+              Address: {contact.address.city}, {contact.address.street}
+            </p>
+          </span>
+        </div>
+      ))}
+    </section>
+  );
 }
 
 export default App;
