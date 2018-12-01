@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "John Smith",
+    "phoneNumber": 48500600700,
+    "email": "john@smith.org",
+    "address": {
+      "city": "Gdansk",
+      "street": "Ogarna 1"
+    },
+    "favourite": false
+  },
+  {
+    "id": 2,
+    "name": "Jaś Fasola",
+    "phoneNumber": 4860125323,
+    "email": "jas@fasol.com",
+    "address": {
+      "city": "Gdansk",
+      "street": "Dmowskiego 12"
+    },
+    "favourite": true
+  },
+  {
+    "id": 3,
+    "name": "Anna Nowak",
+    "phoneNumber": 48702942134,
+    "email": "nowaczka@gmail.com",
+    "address": {
+      "city": "Gdynia",
+      "street": "Władysława 4"
+    },
+    "favourite": true
+  }
+]
