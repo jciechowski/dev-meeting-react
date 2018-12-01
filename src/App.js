@@ -10,7 +10,7 @@ function App() {
       <div className="column">
         <h1>Contacts</h1>
         {contacts.map(contact => (
-          <ContactTile key={contact.id} item={contact} />
+          <ContactTile key={contact.id} item={contact} favouriteList={false} />
         ))}
       </div>
       <div className="column">
@@ -18,7 +18,7 @@ function App() {
         {contacts
           .filter(contact => contact.favourite)
           .map(contact => (
-            <ContactTile key={contact.id} item={contact} />
+            <ContactTile key={contact.id} item={contact} favouriteList={true} />
           ))}
       </div>
     </section>

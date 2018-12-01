@@ -1,14 +1,10 @@
 import React from 'react';
+import MarkFavourite from './markFavourite.js';
 
-function ContactTile({ item }) {
+function ContactTile({ item, favouriteList }) {
   return (
-    <div className="card" key={item.id}>
-      <div className="form-check float-right">
-        <input className="form-check-input" type="checkbox" value="" id="favouriteCheckbox" />
-        <label className="form-check-label">
-          <span className="star">{item.favourite && <i className="fas fa-star" />}</span>
-        </label>
-      </div>
+    <div className="card text-center" key={item.id}>
+      <MarkFavourite favourite={item.favourite} favouriteList={favouriteList} />
       <span className="card-body">
         <h2 className="card-title">{item.name}</h2>
         <p>Phone: +{item.phoneNumber}</p>
