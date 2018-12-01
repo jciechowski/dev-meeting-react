@@ -5,8 +5,8 @@ function ContactTile({ item }) {
     <div className="card" key={item.id}>
       <div className="form-check float-right">
         <input className="form-check-input" type="checkbox" value="" id="favouriteCheckbox" />
-        <label className="form-check-label" for="favouriteCheckbox">
-          Favourite
+        <label className="form-check-label">
+          <span className="star">{item.favourite && <i className="fas fa-star" />}</span>
         </label>
       </div>
       <span className="card-body">
