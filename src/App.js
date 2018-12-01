@@ -3,6 +3,7 @@ import React from 'react';
 function App() {
   const contacts = [
     {
+      id: 1,
       name: 'John Smith',
       phoneNumber: 48500600700,
       eMail: 'john@smith.org',
@@ -12,6 +13,7 @@ function App() {
       }
     },
     {
+      id: 2,
       name: 'Jaś Fasola',
       phoneNumber: 4860125323,
       eMail: 'jas@fasol.com',
@@ -21,6 +23,7 @@ function App() {
       }
     },
     {
+      id: 3,
       name: 'Anna Nowak',
       phoneNumber: 48702942134,
       eMail: 'nowaczka@gmail.com',
@@ -34,7 +37,7 @@ function App() {
     <section>
       <h1>Contacts</h1>
       {contacts.map(contact => (
-        <div className="card col-md-2" key={contact.name}>
+        <div className="card col-md-2" key={contact.id}>
           <span className="card-body">
             <h2 className="card-title">{contact.name}</h2>
             <p>Phone: +{contact.phoneNumber}</p>
