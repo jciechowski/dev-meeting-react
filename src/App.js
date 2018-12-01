@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ContactTile from './components/contact.js';
+import SearchComponent from './components/searchComponent.js';
 import contactsData from './data/contacts.json';
 
 class App extends Component {
@@ -7,7 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
       contacts: [],
-      searchInputValue: ''
+      searchInputValue: '',
+      alphabeticOrder: true
     };
   }
 
@@ -19,30 +21,60 @@ class App extends Component {
   }
 
   updateInputValue = event => {
-    this.setState({
-      searchInputValue: event.target.value
+    const searchCondition = event.target.value;
+    const filteredContacts = this.state.contacts.filter(contact => {
+      return (
+        contact.name.includes(searchCondition) ||
+        contact.email.includes(searchCondition) ||
+        contact.address.city.includes(searchCondition) ||
+        contact.address.street.includes(searchCondition)
+      );
     });
+    this.setState({
+      contacts: filteredContacts
+    });
+    if (event.target.value === '') {
+      this.setState({
+        contacts: contactsData
+      });
+    }
   };
 
-  handleSearchClick = () => {
-    if (this.state.searchInputValue) {
-      const filteredContacts = this.state.contacts.filter(contact => {
-        return contact.name.includes(this.state.searchInputValue);
+  sortClick = () => {
+    const contacts = this.state.contacts;
+    const sortOrder = this.state.alphabeticOrder;
+    if (sortOrder) {
+      this.setState({
+        contacts: contacts.sort((a, b) => a.name.localeCompare(b.name))
       });
-      this.setState({ contacts: filteredContacts });
     } else {
-      this.setState({ contacts: contactsData });
+      this.setState({
+        contacts: contacts.sort((a, b) => b.name.localeCompare(a.name))
+      });
     }
+    this.setState({ alphabeticOrder: !sortOrder });
   };
 
   render() {
     return (
       <div>
-        <div className="float-right">
-          <input value={this.state.searchInputValue} onChange={this.updateInputValue} />
-          <button type="button" className="btn btn-primary" onClick={this.handleSearchClick}>
-            Search
-          </button>
+        <div>
+          <div>
+            <button type="button" className="btn btn-primary" onClick={this.sortClick}>
+              Sort alphabetically{' '}
+              {this.state.alphabeticOrder ? (
+                <i class="fas fa-arrow-up" />
+              ) : (
+                <i class="fas fa-arrow-down" />
+              )}
+            </button>
+          </div>
+          <div className="float-right">
+            <SearchComponent
+              updateInput={this.updateInputValue}
+              inputValue={this.state.searchInputValue}
+            />
+          </div>
         </div>
         <section className="row">
           <div className="column">
